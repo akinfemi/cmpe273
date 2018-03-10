@@ -9,6 +9,7 @@ socket_pull.bind("tcp://127.0.0.1:4242")
 socket_pub.bind("tcp://127.0.0.1:4243")
 
 while True:
-    msg = pull.recv()
-    pub.send(msg)
+    msg = socket_pull.recv()
+    message = ("%s %s" % username, msg)
+    socket_pub.send_string(message)
     time.sleep(1)
